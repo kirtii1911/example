@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Project</title>
+    <link rel="stylesheet" href="" />
+    <style>
+      * {
+        font-family: Manrope, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        border: 0 solid currentColor;
+      }
+
+      nav {
+        overflow: visible;
+        padding: 10px;
+        font-weight: 600;
+        font-size: 140%;
+        display: block; /* Changed from flex to block */
+        margin-right: 300px; /* Added margin to the right */
+      }
+
+      nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center; /* Center items horizontally */
+      }
+
+      nav ul li {
+        position: relative;
+        text-align: center; /* Center the content within each li */
+        margin-right: 50px; /* Add some margin to the right of each navigation item */
+      }
+
+      ul li a {
+        display: block;
+        color: #0a335c;
+        text-decoration: none;
+        padding: 10px 15px;
+        transition: box-shadow 0.3s ease;
+
+        /* Smooth transition for the box shadow */
+      }
+
+      ul li a:hover {
+        border-radius: 5px;
+        color: white;
+        background-color: #0056b3;
+      }
+
+      .menu:hover {
+        background-color: white;
+      }
+
+      ul li:hover > ul {
+        display: block;
+      }
+
+      ul ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #fff;
+        color: #145088;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Box shadow for the sub-menu */
+        border: 2px solid #98c8df; /* Added border */
+        border-radius: 5px; /* Added border radius */
+      }
+
+      ul ul li {
+        width: 200px;
+        text-align: left;
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cdf {
+        border: 2px solid white;
+        box-shadow: none;
+      }
+
+      img {
+        height: 50px; /* Adjust the height as needed */
+        width: auto; /* Maintain aspect ratio */
+      }
+
+      /* Style for the audio controls */
+      .audio {
+        display: none; /* Initially hide the audio element */
+      }
+
+      .audio-controls {
+        border-bottom: none;
+        border: none;
+        box-shadow: none;
+        text-align: center;
+        margin-top: 10px;
+        display: none; /* Initially hide the audio controls */
+      }
+
+      .audio-controls button {
+        margin: 0px;
+        padding: 10px 40px; /* Adjusted padding for better fit */
+        font-size: 14px;
+        background-color: #6a9dd4; /* Blue */
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease; /* Smooth transition for background-color */
+      }
+
+      .audio-controls button:hover {
+        background-color: #377ec9; /* Darker blue on hover */
+      }
+
+      .audio-controls button::before {
+        font-size: 18px;
+        margin-right: 8px;
+      }
+
+      .progress-bar {
+        width: 80%;
+        height: 5px;
+        background-color: #ddd;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        position: relative;
+        display: inline-block;
+        vertical-align: middle;
+      }
+
+      .progress {
+        height: 100%;
+        width: 50%; /* Set the initial progress */
+        background-color: #007bff;
+        transition: width 0.3s ease; /* Smooth transition for progress */
+      }
+
+      .volume-controls {
+        margin-top: 5px;
+      }
+
+      .volume-slider {
+        width: 100px;
+        height: 5px;
+        background-color: #ddd;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 8px;
+      }
+
+      .volume-fill {
+        height: 100%;
+        width: 50%; /* Set the initial volume level */
+        background-color: #007bff;
+        transition: width 0.3s ease; /* Smooth transition for volume level */
+      }
+
+      .topnav {
+        margin-right: auto;
+      }
+
+      .topnav-right {
+        margin-left: auto;
+      }
+
+      .home-page {
+        text-align: center;
+        height: 400px;
+      }
+
+      .text-txt-primary {
+        --tw-text-opacity: 1;
+        color: rgb(10 51 92 / var(--tw-text-opacity));
+      }
+      .overflow-x-hidden {
+        overflow-x: hidden;
+      }
+      .flex-auto {
+        flex: 1 1 auto;
+      }
+      .pt-6 {
+        padding-top: 1.875rem;
+      }
+      .px-4 {
+        padding-left: 1.25rem;
+        padding-right: 1.25rem;
+      }
+      .max-w-screen-container-xl {
+        max-width: 1260px;
+      }
+      .mx-auto {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+      .pb-3 {
+        padding-bottom: 0.9375rem;
+      }
+      .gap-y-3 {
+        row-gap: 0.9375rem;
+      }
+      .items-center {
+        align-items: center;
+      }
+      .flex-col {
+        flex-direction: column;
+      }
+      .flex {
+        display: flex;
+      }
+      .w-\[100px\] {
+        width: 100px;
+      }
+      img,
+      video {
+        max-width: 100%;
+        height: auto;
+      }
+
+  
+
+      .m-0 {
+        margin: 0;
+      }
+      h1 {
+        margin-bottom: 0.9375rem;
+        overflow-wrap: break-word;
+        font-size: 3rem;
+        line-height: 1;
+        font-weight: 800;
+      }
+      .font-semibold {
+        font-weight: 500;
+      }
+      .text-large-xs {
+        font-size: 1.1875rem;
+        line-height: 1.368;
+      }
+
+      .max-w-container-small {
+        max-width: 49.375rem;
+      }
+
+      p {
+        margin-bottom: 0.9375rem;
+      }
+      p {
+        display: block;
+        margin-block-start: 1em;
+        margin-block-end: 1em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+      }
+
+.justify-center {
+    justify-content: center;
+}
+.flex {
+    display: flex;
+}
+.w-\[200px\] {
+    width: 200px;
+}
+.h-\[200px\] {
+    height: 200px;
+}
+.relative {
+    position: relative;
+}
+h2 {
+    margin-bottom: 0.9375rem;
+    overflow-wrap: break-word;
+    font-size: 2.7em;
+    line-height: 1.0625;
+    font-weight: 700;}
+
+
+
+.list {
+   list-style: none;
+   font-size: 1.3rem;
+    margin: 10px;
+    padding: 10px;
+}
+.list {
+    display: block;
+    
+}
+ .list li:before {
+   list-style: none;
+    content: "\2022";
+    font-size: 1.1875rem;
+    position: relative;
+    left: -1.1875rem;
+    top: -1px;
+    display: block;
+    max-height: 0;
+    max-width: 0;
+    --tw-text-opacity: 1;
+    color: rgb(10 51 92/var(--tw-text-opacity));
+}
+.flex-col {
+    flex-direction: column;
+}
+.max-w-container-small {
+    max-width: 49.375rem;
+}
+.flex {
+    display: flex;
+}
+div {
+    display: block;
+}
+
+.hey{
+   text-align: center;
+
+}
+
+.para{
+   font-size: 1.23rem;
+}
+
+    </style>
+
+  </head>
+  <body>
+    <main class="flex-auto text-txt-primary prose overflow-x-hidden">
+      <div class="mx-auto pt-6 px-4 max-w-screen-container-xl md:pt-7 md:px-6">
+        <section>
+          <div
+            class="flex flex-col gap-y-3 md:gap-y-4 text-center items-center pb-3 md:pb-0"
+          >
+            <img
+              src="main/ms-starky.svg"
+              alt="abc"
+              class="w-[100px]"
+              height="100"
+              width="10"
+            />
+            <h1 class="m-0">Learn how to touch type</h1>
+            <p
+              class="font-semibold text-large-xs md:text-small-t-xs max-w-container-small"
+            >
+              Touch typing is all about the idea that each finger has its own
+              area on the keyboard. Thanks to that fact you can type
+              without looking at the 
+              keys. Practice regularly and your fingers will learn their
+              location on 
+              the keyboard through muscle memory.
+            </p>
+          </div>
+        </section>
+        <section class="flex justify-center">
+         <div class="max-w-container-small flex flex-col items-center gap-y-3 md:gap-y-4 pt-6 md:pt-4">
+             <div class="w-[200px] h-[200px] relative">
+                 <img src="main/cloak.jpg" alt="Sitting posture for typing" class="w-[200px] h-[200px] absolute" width="100" height="100">  
+             </div>
+           <h2 class="text-center">Sitting posture for typing</h2>
+           <ul class="list">
+             <li>Sit straight and remember to keep your back straight.</li>
+             <li>Keep your elbows bent at the right angle.</li>
+             <li>Face the screen with your head slightly tilted forward.</li>
+             <li>Keep at least 45 - 70 cm of distance between your eyes and the screen.</li>
+             <li>Еxpose the shoulder, arm, and wrist muscles to the least possible strain. The wrists can touch the tabletop in front of the keyboard. Never shift your body weight to the wrists by resting on them.</li>
+           </ul>
+         </div>
+       </section> 
+       <section class="flex justify-center">
+         <div class="flex flex-col max-w-container-small pt-3 md:pt-4">
+           <h2 class="text-center">Home row position</h2>
+           <div class="md:flex md:-mx-3 md:flex-wrap">
+            
+             <p class="para">Curve your fingers a little and put them on the ASDF and JKL; keys which are located in the middle row of the letter keys. This row is called HOME ROW because you always start from these keys and always return to them.</p> 
+             <p class="para">F and J keys under your index fingers should have a raised line on them to aide in finding these keys without looking.</p>
+           </div>
+         </div>
+       </section>
+       <section class="flex justify-center">
+        <div class="max-w-container-small flex flex-col items-center pt-3 md:pt-4">
+          <img class="w-[100px] h-[100px]" src="/main/finger_motion.svg" alt="Don't look at the keys when you type. Just slide your fingers around until they find the home row marking." width="100" height="100">
+          <h2>Fingers motion</h2>
+          <p class="para">Don't look at the keys when you type. Just slide your fingers around until they find the home row marking.</p>
+          <p class="para">Limit your hand and finger movement only to what is necessary to press a specific key. Keep your hands and fingers close to the base position. This improves typing speed and reduces stress on the hands.</p>
+          <p class=" para">Pay attention to ring fingers and little fingers, since they are considerably underdeveloped.</p>
+        </div>
+      </section>
+      </div>
+    </main>
+
+    <script src="myproject.js">
+      function toggleAudio() {
+        var audio = document.getElementById("background-audio");
+        var toggleButton = document.getElementById("toggle-audio-button");
+        var audioControls = document.querySelector(".audio-controls");
+
+        if (audio.paused) {
+          audio.play();
+          toggleButton.innerText = "Turn Off";
+        } else {
+          audio.pause();
+          toggleButton.innerText = "Turn On";
+        }
+      }
+
+      // Show audio controls when clicking on "Music" link
+      document.getElementById("audio-link").addEventListener("click", function() {
+        var audioControls = document.querySelector(".audio-controls");
+        audioControls.style.display = (audioControls.style.display === "block") ? "none" : "block";
+      });
+    </script>
+  </body>
+</html>

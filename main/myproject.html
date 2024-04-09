@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Project</title>
+  <link rel="stylesheet" href="myproject.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <div>
+        <ul>
+          <li>
+            <a href='myproject.html' class="topnav menu"><img src="logo_name.jpg" alt=""></a>
+          </li>
+          <li>
+            <a href="#" class="topnav">Typing Tests</a>
+            <ul>
+              <li><a href="/Keyboard-Hero-master/Keyboard-Hero-master/index.html">Keyboard practice</a></li>
+              <li><a href="/Typing Speed Test Game in JavaScript/index.html">Test</a></li></ul>
+          </li>
+          <li>
+            <a href="/lesson.html" class="topnav">Lessons </a>
+          </li>
+          <li>
+            <a href="#" class="topnav-right">More</a>
+            <ul>
+              <li><a href="#">FAQs💬</a></li>
+              <li><a href="#">About us <img style='width: 20px;
+                height: 20px; 
+                font-size: 12px;'src="github-logo-24.png" alt=""></a></li>
+              <li><a href="contact_us.html">Contact us✉</a></li>
+              <li><a href="/feeback.html">Feedback✍️</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="home-page" >
+      <img src="typing.gif" alt="abc" class="home-page" class="home-page">               
+   </div>
+   <div class="heading">
+    Type faster
+   </div>
+   <div class="sub-heading">
+    Improve Your Typing Speed with SwiftType.Take our typing  <br>lessons for free.
+   </div>
+   <div class="learn-test">
+    <div >
+      <a href="/lesson.html" class="learn">Start learning</a>
+    </div>
+    <div >
+      <a href="/test speedd/testspeed.html" class="test">Test your speed</a>
+    </div>
+   </div>
+   <br>
+   <br>
+  <section class="section1">
+    <div class="ms-starky">
+      <div class="imagestarky">
+        <img src="ms-starky.svg" alt="" height="100" width="100" class="ms-starky-image">
+      </div>
+      <div style="display: block;">
+        <div class="ms-starky2">
+          <h2 class="Learn_Touch_Typing">
+            Learn Touch Typing
+          </h2>
+          <p class="Learn_Touch_Typing2">
+            Speed up your learning progress with Swift type typing tutor and develop valuable keyboarding skills!
+          </p>
+          <a href="#" class="viewtips">View tips</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="course-gamemode">
+    <div class="left-content">
+      <div class="flex mb-4 min-h"><img src="course.svg" alt="course" width="101" height="100" class="mx-auto"></div>
+      <h2 class="course_gamemode">Find your course</h2>
+      <p class="paracoursegame">English, Spanish, French, Polish, and even Ukrainian! Swifttype <br> has courses for every taste.</p>
+     <a href="#" class="learn"> Choose the courses</a>
+    </div>
+
+    <div class="right-content">
+      <div class="flex mb-4 items-end min-h"><img src="acaca.svg" alt="acaca" width="100" height="62" class="mx-auto"></div>
+      <h2 class="course_gamemode">Type with a game mode</h2> 
+      <p class="paracoursegame">Learn to type with a game mode: earn coins, buy new heroes. <br> It’s fun and effective!</p>
+      <a href="#" class="learn"> Start with game mode</a>
+    </div>
+  </section> <br>
+
+  <section  style="text-align: center;">
+    <img src="group.svg" alt="group" class="group">
+    <h2 class="course_gamemode">Group</h2>
+    <div class="grouping">
+      <div class=" sent">
+      
+      <p class="paracoursegame">The more the merrier! Make a group to <br> compete with your friends, classmates  <br>or colleagues.</p>
+    </div>
+
+    <div class="sent">
+      
+      <p class="paracoursegame">Create a corporate group for your  <br>company. Find out the typing speed  <br>of employees.</p>
+    </div>
+  </div>
+  <a href="#" class="learn" >More about groups</a>
+  </section>
+
+  <section class="darkgreen display">
+  
+    <div class="f-t">
+      <h2 class="for_teach">For teachers</h2>
+      <p class="text-txt-secondary-on-bg">With Swifttype you can easily teach your students touch <br> typing and it's absolutely free.</p>
+      <p class="text-txt-secondary-on-bg">Seamlessly sign-on, sync all your classes and students <br> with Google Classroom.</p>
+      <a href="#" class="test" >Find out more</a>
+    </div>
+  
+      <div class="cap-teacher-size">
+       <img src="cap-teacher.svg" alt="cap-teacher" class="cap-teacher" width="320" height="200">
+    </div>
+  </section>
+
+  
+  
+
+
+  </main>
+  
+  <script>
+    function toggleAudio() {
+      var audio = document.getElementById("background-audio");
+      var toggleButton = document.getElementById("toggle-audio-button");
+      var audioControls = document.querySelector(".audio-controls");
+  
+      if (audio.paused) {
+        audio.play();
+        toggleButton.innerText = "Turn Off";
+      } else {
+        audio.pause();
+        toggleButton.innerText = "Turn On";
+      }
+    }
+  
+    // Show audio controls when clicking on "Audio" link
+    document.getElementById("audio-link").addEventListener("click", function() {
+      var audioControls = document.querySelector(".audio-controls");
+      audioControls.style.display = (audioControls.style.display === "block") ? "none" : "block";
+    });
+  
+   
+  </script>
+
+<?php
+session_start();
+
+if (isset($_GET['toggleAudio'])) {
+    $_SESSION['audioControlsVisible'] = !$_SESSION['audioControlsVisible'];
+}
+?>
+
+
+
+  
+</body>
+</html>
+
+
+

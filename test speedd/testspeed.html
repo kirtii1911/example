@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>swifttype</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/styles.css" />
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,500;1,300&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  
+  <body>
+    
+
+    <div class="play-area">
+      <div class="timer" id="timer">00:00</div>
+
+        <div class="reference-text" id="referenceText">
+            <span>T</span><span>h</span><span>e</span><span> </span><span>q</span
+            ><span>u</span><span>i</span><span>c</span><span>k</span><span> </span
+            ><span>b</span><span>r</span><span>o</span><span>w</span><span>n</span
+            ><span> </span><span>f</span><span>o</span><span>x</span><span> </span
+            ><span>j</span><span>u</span><span>m</span><span>p</span><span>s</span
+            ><span> </span><span>o</span><span>v</span><span>e</span><span>r</span
+            ><span> </span><span>t</span><span>h</span><span>e</span><span> </span
+            ><span>l</span><span>a</span><span>z</span><span>y</span><span> </span
+            ><span>d</span><span>o</span><span>g</span>
+        </div>
+
+        <textarea class="input-val" id="inputVal" autofocus></textarea>
+
+        <br />
+
+        <button class="refresh" onClick="window.location.reload();">
+            Refresh
+        </button>
+    </div>
+  </body>
+
+  
+<!-- Add this array of sentences before the script tag -->
+<script>
+  const sentences = [
+  "The quick brown fox jumps over the lazy dog",
+    "A journey of a thousand miles begins with a single step",
+    "The best way to predict the future is to create it",
+    "Life is really simple, but we insist on making it complicated",
+    "You only live once, but if you do it right, once is enough",
+    "Believe you can and you're halfway there",
+    "Life is what happens when you're busy making other plans",
+  ];
+</script>
+
+<!-- Update the script tag with the following code -->
+<script>
+  const referenceText = document.getElementById("referenceText");
+  const inputVal = document.getElementById("inputVal");
+
+  function getRandomSentence() {
+    return sentences[Math.floor(Math.random() * sentences.length)];
+  }
+
+  function refreshPage() {
+    window.location.reload();
+  }
+
+  inputVal.addEventListener("input", () => {
+    const letters_array = referenceText.querySelectorAll("span");
+    const arrayVal = inputVal.value.split("");
+    let tempVar = true;
+    letters_array.forEach((characterSpan, index) => {
+      const character = arrayVal[index];
+      if (character == null) {
+        characterSpan.classList.remove("correct");
+        characterSpan.classList.remove("incorrect");
+        tempVar = false;
+      } else if (character === characterSpan.innerText) {
+        characterSpan.classList.add("correct");
+        characterSpan.classList.remove("incorrect");
+      } else {
+        characterSpan.classList.remove("correct");
+        characterSpan.classList.add("incorrect");
+        tempVar = false;
+      }
+      startTimer();
+    });
+
+    if (tempVar) {
+      stopTimer();
+    }
+  });
+
+  function initializeGame() {
+    const randomSentence = getRandomSentence();
+    const spanElements = randomSentence.split("").map((char) => {
+      const span = document.createElement("span");
+      span.innerText = char;
+      return span;
+    });
+
+    referenceText.innerHTML = "";
+    spanElements.forEach((span) => referenceText.appendChild(span));
+  }
+
+  // Call initializeGame when the page loads
+  window.onload = initializeGame;
+
+  // Rest of the existing code...
+  inputVal.addEventListener("keydown", (event) => {
+    // Check if the pressed key is Enter (key code 13)
+    if (event.keyCode === 13) {
+      refreshPage();
+    }
+  });
+
+
+
+
+inputVal.addEventListener('input', () => {
+    const letters_array = referenceText.querySelectorAll('span')
+    const arrayVal = inputVal.value.split('')
+    let tempVar = true
+    letters_array.forEach((characterSpan, index) => {
+        const character = arrayVal[index]
+        if (character == null) 
+            // IF IT DOESN'T EXIST
+            {
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.remove('incorrect')
+            tempVar = false
+        } else if (character === characterSpan.innerText) 
+            // IF IT IS CORRECT
+            {
+            characterSpan.classList.add('correct')
+            characterSpan.classList.remove('incorrect')
+            
+          } else 
+            // IF IT IS WRONG
+             {
+            characterSpan.classList.remove('correct')
+            characterSpan.classList.add('incorrect')
+            tempVar = false
+        }
+        startTimer()
+    })
+
+    if (tempVar) {stopTimer()}
+})
+
+// TIMER FUNCTIONS
+
+const timer = document.getElementById('timer');
+
+var sec = 0;
+var msec = 0;
+var stoptime = true;
+
+function startTimer() {
+  if (stoptime == true) {
+        stoptime = false;
+        timerCycle();
+    }
+}
+function stopTimer() {
+  if (stoptime == false) {
+    stoptime = true;
+    timer.classList.add("time-stopped")
+  }
+}
+
+function timerCycle() {
+    if (stoptime == false) {
+    msec = parseInt(msec);
+    sec = parseInt(sec);
+
+    msec = msec + 1;
+
+    if (msec == 100) {
+      sec = sec + 1;
+      msec = 0;
+    }
+
+    if (msec < 10 || msec == 0) {
+      msec = '0' + msec;
+    }
+    if (sec < 10 || sec == 0) {
+      sec = '0' + sec;
+    }
+
+    timer.innerHTML = sec + ':' + msec;
+
+    setTimeout("timerCycle()", 10);
+  }
+}
+
+function resetTimer() {
+    timer.innerHTML = '00:00';
+}
+
+// TAB TO RESTART
+  </script>
+</html>

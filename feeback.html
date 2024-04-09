@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Project</title>
+  <link rel="stylesheet" href="feedback.css">
+</head>
+<body>
+  <div class="wrapper">
+    <div class="title">Rate your experience</div>
+    <div class="content">We highly value your feedback! Kindly take a moment to rate your experience and provide us with your valuable feedback.</div>
+    <div class="rate-box">
+      <input type="radio" name="star" id="star0" required/>
+      <label class="star" for="star0"></label>
+      <input type="radio" name="star" id="star1" required/>
+      <label class="star" for="star1"></label>
+      <input type="radio" name="star" id="star2" checked="checked" required/>
+      <label class="star" for="star2"></label>
+      <input type="radio" name="star" id="star3" required/>
+      <label class="star" for="star3"></label>
+      <input type="radio" name="star" id="star4" required/>
+      <label class="star" for="star4"></label>
+    </div>
+    <textarea cols="30" rows="6" placeholder="Tell us about your experience!" required></textarea>
+    <!-- Add an onclick event to call a function to handle form submission -->
+    <div class="submit-btn"><a href="thanks.html" onclick="submitForm()">Send</a></div>
+  </div>
+ 
+  <script>
+    function submitForm() {
+      // Check if all required fields are filled out
+      var starInputs = document.querySelectorAll('input[name="star"]:checked');
+      var textareaInput = document.querySelector('textarea');
+      
+      if (starInputs.length === 1 && textareaInput.value.trim() !== '') {
+        // If all required fields are filled out, submit the form
+        alert("Feedback submitted successfully!");
+        // You can replace the alert with any other action you want upon successful submission
+      } else {
+        // If any required field is not filled out, display an alert
+        alert("Please fill out all required fields.");
+      }
+    }
+  </script>
+</body>
+</html>
